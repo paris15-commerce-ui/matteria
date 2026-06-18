@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-porcelain text-ink antialiased;
+  font-feature-settings: 'ss01' on, 'cv05' on;
+}
+
+::selection {
+  background: rgba(194, 168, 120, 0.35);
+}
+
+/* ---- Expérience visite (thème sombre cinématique) ---- */
+.visit-theme {
+  color-scheme: dark;
+  @apply bg-ink text-porcelain;
+}
+
+/* ---- Halo vocal (signature) ---- */
+.halo {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.halo::before,
+.halo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(194, 168, 120, 0.55);
+  pointer-events: none;
+}
+.halo[data-state='speaking']::before {
+  animation: haloPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.halo[data-state='speaking']::after {
+  animation: haloPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite 0.5s;
+}
+.halo[data-state='listening']::before {
+  animation: haloPulse 1.4s ease-in-out infinite;
+  border-color: rgba(243, 239, 230, 0.5);
+}
+.halo[data-state='thinking']::before {
+  animation: haloPulse 0.9s ease-in-out infinite;
+  border-color: rgba(194, 168, 120, 0.9);
+}
+
+/* Scrollbars discrètes (back-office) */
+.thin-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(11, 14, 20, 0.18); border-radius: 8px; }
+.visit-theme .thin-scroll::-webkit-scrollbar-thumb { background: rgba(243, 239, 230, 0.18); }
