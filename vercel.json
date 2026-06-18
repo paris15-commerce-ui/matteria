@@ -1,0 +1,8 @@
+{
+  "framework": "nextjs",
+  "regions": ["cdg1"],
+  "functions": {
+    "src/app/api/documents/upload/route.ts": { "maxDuration": 120 },
+    "src/app/api/visits/[id]/end/route.ts": { "maxDuration": 60 }
+  }
+}
